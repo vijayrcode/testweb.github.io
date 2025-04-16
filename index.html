@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warm Ups - Interactive Team Fitness App | AR Technologies</title>
+    <style>
+        :root {
+            --primary: #0064b6;
+            --secondary: #dc3545;
+            --darkgray: #323232;
+            --lightgray: #f0f0f0;
+            --green: #008000;
+            --orange: #ffa500;
+            --red: #ff0000;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--darkgray);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        section {
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        h3 {
+            color: var(--darkgray);
+        }
+        .variation {
+            margin-bottom: 2rem;
+        }
+        .variation img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .difficulty-beginner { color: var(--green); }
+        .difficulty-intermediate { color: var(--orange); }
+        .difficulty-advanced { color: var(--red); }
+        .benefits {
+            background: var(--lightgray);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        footer {
+            background: var(--darkgray);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        .game-setup {
+            background: var(--lightgray);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .game-setup ol {
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="ic_launcher-playstore.png" alt="Warm Up App Logo" width="100">
+            <h1>Warm Ups</h1>
+            <p>Transform Your Team's Fitness with Interactive Challenges</p>
+            <a href="https://play.google.com/store/apps/details?id=com.ar.touchrace" class="cta-button">Download on Google Play</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="intro">
+            <h2>Redefining Team Fitness</h2>
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <p><strong>Warm Ups</strong> is an innovative, interactive fitness game that transforms ordinary workouts into thrilling team-building challenges. Unlike conventional systems requiring external sensors, our solution leverages Android devices as glowing touchpoints, connecting multiple devices via 4G/5G networks.</p>
+                    <p>This cutting-edge approach enables:</p>
+                    <ul>
+                        <li>Seamless participation for individuals, athletes, and corporate teams</li>
+                        <li>Minimal setup requirements with maximum engagement</li>
+                        <li>Customizable high-intensity fitness activities</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="team_warmup.jpg" alt="Team participating in Warm Ups">
+                </div>
+            </div>
+        </section>
+
+        <section id="variations">
+            <h2>Game Variations</h2>
+            <p>Warm Ups features progressive difficulty variations to maintain engagement and physical challenge. Each variation includes clear benefits and implementation guidelines.</p>
+
+            <h3 class="difficulty-beginner">Beginner Variations</h3>
+            
+            <div class="variation">
+                <h4>Tiptoe Walk Variation</h4>
+                <img src="tiptoe_walk.png" alt="Demonstration of the tiptoe walk variation">
+                <div class="benefits">
+                    <p><strong>Movement:</strong> Walk/run on tiptoes to target</p>
+                    <p><strong>Benefits:</strong> Improves balance and calf engagement</p>
+                </div>
+            </div>
+
+            <div class="variation">
+                <h4>One-Legged Hop Variation</h4>
+                <img src="one_leg_hop.jpg" alt="Demonstration of one-legged hop variation">
+                <div class="benefits">
+                    <p><strong>Movement:</strong> Unilateral hopping with leg switch after touch</p>
+                    <p><strong>Benefits:</strong> Enhances coordination and lower-body strength</p>
+                </div>
+            </div>
+
+            <h3 class="difficulty-intermediate">Intermediate Variations</h3>
+            
+            <div class="variation">
+                <h4>Crouch Walk Variation (Duck Walk)</h4>
+                <img src="crouch_walk.jpg" alt="Demonstration of crouch walk variation">
+                <div class="benefits">
+                    <p><strong>Movement:</strong> Squat-position locomotion</p>
+                    <p><strong>Benefits:</strong></p>
+                    <ul>
+                        <li>Strengthens quadriceps, glutes, hamstrings</li>
+                        <li>Improves stability through low center of gravity</li>
+                        <li>Enhances hip/ankle mobility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Add other variations following the same pattern -->
+            
+            <h3 class="difficulty-advanced">Advanced Variations</h3>
+            
+            <div class="variation">
+                <h4>Wheelbarrow Walk Variation</h4>
+                <img src="wheelbarrow.jpg" alt="Demonstration of wheelbarrow walk variation">
+                <div class="benefits">
+                    <p><strong>Movement:</strong> Partner-assisted hand walking</p>
+                    <p><strong>Benefits:</strong></p>
+                    <ul>
+                        <li>Builds upper-body strength</li>
+                        <li>Fosters teamwork and trust</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="implementation">
+            <h2>Implementation Guide</h2>
+            <div class="game-setup">
+                <h3>Game Workflow: Seamless Setup Process</h3>
+                <ol>
+                    <li><strong>Installation</strong>
+                        <ul>
+                            <li>Download from Google Play Store on all devices</li>
+                        </ul>
+                    </li>
+                    <li><strong>Initialization</strong>
+                        <ul>
+                            <li>Launch and select Single Glow/Two Glow mode</li>
+                        </ul>
+                    </li>
+                    <li><strong>Game Configuration</strong>
+                        <ul>
+                            <li>Choose Count-Based or Duration-Based format</li>
+                        </ul>
+                    </li>
+                    <li><strong>Network Setup</strong>
+                        <ol type="a">
+                            <li>Generate unique game code on host device</li>
+                            <li>Join session on participant devices</li>
+                        </ol>
+                    </li>
+                    <li><strong>Device Placement</strong>
+                        <ul>
+                            <li>Arrange according to selected variation</li>
+                        </ul>
+                    </li>
+                    <li><strong>Game Execution</strong>
+                        <ul>
+                            <li>Initiate and monitor session</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="corporate">
+            <h2>Corporate Wellness Benefits</h2>
+            <ul>
+                <li><strong>Employee Well-being:</strong> Foundation for organizational success</li>
+                <li><strong>Team Dynamics:</strong> Enhanced communication and mutual respect</li>
+                <li><strong>Performance Outcomes:</strong> Increased productivity and morale</li>
+            </ul>
+            <p>Transform your corporate team's fitness routine into an engaging, bonding experience with Warm Ups!</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h3>Get Warm Ups Today!</h3>
+            <a href="https://play.google.com/store/apps/details?id=com.ar.touchrace" class="cta-button">Download on Google Play</a>
+            <p>© 2025 AR Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
