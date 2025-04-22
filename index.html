@@ -3,242 +3,902 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warm Ups - Interactive Team Fitness App | AR Technologies</title>
+    <title>Warm Ups - Interactive Fitness Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
-            --primary: #0064b6;
-            --secondary: #dc3545;
-            --darkgray: #323232;
-            --lightgray: #f0f0f0;
-            --green: #008000;
-            --orange: #ffa500;
-            --red: #ff0000;
+            --primary: #673AB7;
+            --secondary: #512DA8;
+            --light: #EDE7F6;
+            --dark: #343a40;
+            --text: #6c757d;
         }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--darkgray);
+            color: var(--text);
+            line-height: 1.6;
         }
+        
+        /* Header */
+        .navbar {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            animation: fadeInDown 0.8s ease;
+        }
+        
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
-        header {
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn {
+            display: inline-block;
             background: var(--primary);
             color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        header p {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 12px 30px;
+            border-radius: 30px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-        section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #eee;
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(103, 58, 183, 0.2);
         }
-        h2 {
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
             color: var(--primary);
-            margin-top: 0;
         }
-        h3 {
-            color: var(--darkgray);
+
+        .nav-menu a.active {
+            color: var(--primary);
+            font-weight: 600;
         }
-        .variation {
-            margin-bottom: 2rem;
+
+        .nav-menu a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10px;
+            right: 10px;
+            height: 2px;
+            background: var(--primary);
+            animation: underline 0.3s ease;
         }
-        .variation img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 1rem 0;
+
+        @keyframes underline {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
         }
-        .difficulty-beginner { color: var(--green); }
-        .difficulty-intermediate { color: var(--orange); }
-        .difficulty-advanced { color: var(--red); }
-        .benefits {
-            background: var(--lightgray);
-            padding: 1rem;
-            border-radius: 5px;
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            text-align: center;
         }
-        footer {
-            background: var(--darkgray);
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            animation: fadeInUp 0.8s ease 0.6s both, pulse 2s infinite 2s;
+        }
+        
+        .hero-image {
+            max-width: 800px;
+            margin: 50px auto 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease 0.8s both, float 6s ease-in-out infinite 1.8s;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Features Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .feature-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Different card colors for "Why Choose Warm Ups" section */
+        .feature-card.card-1 {
+            border-top: 5px solid #B39DDB;
+            transition-delay: 0.1s;
+        }
+        
+        .feature-card.card-2 {
+            border-top: 5px solid #7E57C2;
+            transition-delay: 0.2s;
+        }
+        
+        .feature-card.card-3 {
+            border-top: 5px solid #5E35B1;
+            transition-delay: 0.3s;
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2);
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        /* Bullet points for variation descriptions */
+        .variation-content ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .variation-content li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .variation-content li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* Variations Section */
+        .variation-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .variation-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .variation-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .variation-image {
+            height: 200px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            transition: all 0.5s ease;
+        }
+        
+        .variation-card:hover .variation-image {
+            transform: scale(1.05);
+        }
+        
+        .variation-content {
+            padding: 25px;
+        }
+        
+        .variation-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .variation-card:hover .variation-content h3 {
+            color: var(--primary);
+        }
+        
+        .variation-content .level {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .variation-card:hover .level {
+            transform: scale(1.1);
+        }
+        
+        .level-beginner {
+            background: #e3f9e5;
+            color: #28a745;
+        }
+        
+        .level-intermediate {
+            background: #fff8e1;
+            color: #ffc107;
+        }
+        
+        .level-advanced {
+            background: #ffe8e8;
+            color: #dc3545;
+        }
+        
+        /* Implementation Guide Section */
+        .guide-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .guide-step.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .guide-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            background: #EDE7F6;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .guide-step:hover .guide-image {
+            transform: rotate(-2deg) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .guide-content {
+            max-width: 600px;
+        }
+        
+        .guide-content h3 {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .guide-step:hover .guide-content h3 {
+            color: var(--primary);
+        }
+        
+        .guide-content ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+        
+        .guide-content li {
+            margin-bottom: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .guide-step:hover .guide-content li {
+            transform: translateX(5px);
+        }
+        
+        .guide-content li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            padding: 80px 0;
+            border-radius: 10px;
+            margin: 50px 0;
+            animation: fadeIn 1s ease;
         }
-        .game-setup {
-            background: var(--lightgray);
-            padding: 1.5rem;
-            border-radius: 8px;
+        
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
         }
-        .game-setup ol {
-            padding-left: 1.5rem;
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .cta-badge {
+            display: inline-block;
+            animation: fadeInUp 0.8s ease 0.4s both, pulse 2s infinite 1s;
+        }
+        
+        .btn-light {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .google-play-badge {
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+        
+        .google-play-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-links h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Intersection Observer animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section IDs for navigation */
+        #introduction {
+            scroll-margin-top: 100px;
+        }
+        #benefits {
+            scroll-margin-top: 100px;
+        }
+        #implementation {
+            scroll-margin-top: 100px;
+        }
+        #variations {
+            scroll-margin-top: 100px;
+        }
+        #joinus {
+            scroll-margin-top: 100px;
         }
     </style>
 </head>
 <body>
-    <header>
+    <!-- Header -->
+    <nav class="navbar">
         <div class="container">
-            <img src="ic_launcher-playstore.png" alt="Warm Up App Logo" width="100">
-            <h1>Warm Ups</h1>
-            <p>Transform Your Team's Fitness with Interactive Challenges</p>
-            <a href="https://play.google.com/store/apps/details?id=com.ar.touchrace" class="cta-button">Download on Google Play</a>
-        </div>
-    </header>
-
-    <div class="container">
-        <section id="intro">
-            <h2>Redefining Team Fitness</h2>
-            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px;">
-                    <p><strong>Warm Ups</strong> i an innovative, interactive fitness game that transforms ordinary workouts into thrilling team-building challenges. Unlike conventional systems requiring external sensors, our solution leverages Android devices as glowing touchpoints, connecting multiple devices via 4G/5G networks.</p>
-                    <p>This cutting-edge approach enables:</p>
-                    <ul>
-                        <li>Seamless participation for individuals, athletes, and corporate teams</li>
-                        <li>Minimal setup requirements with all engagement</li>
-                        <li>Customizable high-intensity fitness activities</li>
-                    </ul>
-                </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <img src="team_warmup.jpg" alt="Team participating in Warm Ups">
-                </div>
+            <div class="logo">
+                <img src="logo-placeholder.png" alt="Warm Ups Logo">
             </div>
-        </section>
-
-        <section id="variations">
-            <h2>Game Variations</h2>
-            <p>Warm Ups features progressive difficulty variations to maintain engagement and physical challenge. Each variation includes clear benefits and implementation guidelines.</p>
-
-            <h3 class="difficulty-beginner">Beginner Variations</h3>
-            
-            <div class="variation">
-                <h4>Tiptoe Walk Variation</h4>
-                <img src="tiptoe_walk.png" alt="Demonstration of the tiptoe walk variation">
-                <div class="benefits">
-                    <p><strong>Movement:</strong> Walk/run on tiptoes to target</p>
-                    <p><strong>Benefits:</strong> Improves balance and calf engagement</p>
-                </div>
-            </div>
-
-            <div class="variation">
-                <h4>One-Legged Hop Variation</h4>
-                <img src="one_leg_hop.jpg" alt="Demonstration of one-legged hop variation">
-                <div class="benefits">
-                    <p><strong>Movement:</strong> Unilateral hopping with leg switch after touch</p>
-                    <p><strong>Benefits:</strong> Enhances coordination and lower-body strength</p>
-                </div>
-            </div>
-
-            <h3 class="difficulty-intermediate">Intermediate Variations</h3>
-            
-            <div class="variation">
-                <h4>Crouch Walk Variation (Duck Walk)</h4>
-                <img src="crouch_walk.jpg" alt="Demonstration of crouch walk variation">
-                <div class="benefits">
-                    <p><strong>Movement:</strong> Squat-position locomotion</p>
-                    <p><strong>Benefits:</strong></p>
-                    <ul>
-                        <li>Strengthens quadriceps, glutes, hamstrings</li>
-                        <li>Improves stability through low center of gravity</li>
-                        <li>Enhances hip/ankle mobility</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Add other variations following the same pattern -->
-            
-            <h3 class="difficulty-advanced">Advanced Variations</h3>
-            
-            <div class="variation">
-                <h4>Wheelbarrow Walk Variation</h4>
-                <img src="wheelbarrow.jpg" alt="Demonstration of wheelbarrow walk variation">
-                <div class="benefits">
-                    <p><strong>Movement:</strong> Partner-assisted hand walking</p>
-                    <p><strong>Benefits:</strong></p>
-                    <ul>
-                        <li>Builds upper-body strength</li>
-                        <li>Fosters teamwork and trust</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="implementation">
-            <h2>Implementation Guide</h2>
-            <div class="game-setup">
-                <h3>Game Workflow: Seamless Setup Process</h3>
-                <ol>
-                    <li><strong>Installation</strong>
-                        <ul>
-                            <li>Download from Google Play Store on all devices</li>
-                        </ul>
-                    </li>
-                    <li><strong>Initialization</strong>
-                        <ul>
-                            <li>Launch and select Single Glow/Two Glow mode</li>
-                        </ul>
-                    </li>
-                    <li><strong>Game Configuration</strong>
-                        <ul>
-                            <li>Choose Count-Based or Duration-Based format</li>
-                        </ul>
-                    </li>
-                    <li><strong>Network Setup</strong>
-                        <ol type="a">
-                            <li>Generate unique game code on host device</li>
-                            <li>Join session on participant devices</li>
-                        </ol>
-                    </li>
-                    <li><strong>Device Placement</strong>
-                        <ul>
-                            <li>Arrange according to selected variation</li>
-                        </ul>
-                    </li>
-                    <li><strong>Game Execution</strong>
-                        <ul>
-                            <li>Initiate and monitor session</li>
-                        </ul>
-                    </li>
-                </ol>
-            </div>
-        </section>
-
-        <section id="corporate">
-            <h2>Corporate Wellness Benefits</h2>
-            <ul>
-                <li><strong>Employee Well-being:</strong> Foundation for organizational success</li>
-                <li><strong>Team Dynamics:</strong> Enhanced communication and mutual respect</li>
-                <li><strong>Performance Outcomes:</strong> Increased productivity and morale</li>
+            <ul class="nav-menu">
+                <li><a href="#introduction" class="nav-link">Introduction</a></li>
+                <li><a href="#benefits" class="nav-link">Benefits</a></li>
+                <li><a href="#implementation" class="nav-link">Implementation</a></li>
+                <li><a href="#variations" class="nav-link">Variations</a></li>
+                <li><a href="#joinus" class="nav-link">JoinUs</a></li>
             </ul>
-            <p>Transform your corporate team's fitness routine into an engaging, bonding experience with Warm Ups!</p>
-        </section>
-    </div>
+            <a href="https://play.google.com/store/apps/details?id=com.ar.touchrace" class="hero-badge">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="google-play-badge">
+            </a>
+        </div>
+    </nav>
 
-    <footer>
+    <!-- Hero Section -->
+    <section class="hero" id="introduction">
         <div class="container">
-            <h3>Get Warm Ups Today!</h3>
-            <a href="https://play.google.com/store/apps/details?id=com.ar.touchrace" class="cta-button">Download on Google Play</a>
-            <p>© 2025 AR Technologies. All rights reserved.</p>
+            <h1>Transform Fitness into Play</h1>
+            <p>Warm Ups is a dynamic, device-powered fitness game that brings people together through fun, movement-based challenges. Using just Android smartphones, it transforms any space into an interactive playground — no extra sensors or equipment needed.</p>
+            <div class="hero-badge">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="google-play-badge">
+            </div>
+            <div class="hero-image">
+                <img src="hero-placeholder.jpg" alt="Warm Ups in action">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="benefits">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Why Choose Warm Ups</h2>
+                <p>From beginners to fitness enthusiasts, solo players to big team, the app offers customizable activities designed to aid coordination, and social connection.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card card-1 animate-on-scroll">
+                    <div class="feature-icon">🏃</div>
+                    <h3>No Equipment Needed</h3>
+                    <p>Just use Android smartphones you already own - no special sensors or gear required.</p>
+                </div>
+                <div class="feature-card card-2 animate-on-scroll">
+                    <div class="feature-icon">👥</div>
+                    <h3>Team Bonding</h3>
+                    <p>Perfect for corporate teams, sports groups, or social gatherings to build connections.</p>
+                </div>
+                <div class="feature-card card-3 animate-on-scroll">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Customizable Activities</h3>
+                    <p>Choose from multiple game variations to match your group's fitness level and goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Variations Section -->
+    <section class="section" style="background: #f8f9fa;" id="variations">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Activity Variations</h2>
+                <p>Whether you're looking to energize your morning, break the ice at a gathering, or simply get moving with friends, Warm Ups makes fitness playful and inclusive.</p>
+            </div>
+            <div class="features-grid">
+                <!-- Beginner Variation -->
+                <div class="variation-card animate-on-scroll">
+                    <div class="variation-image" style="background: #e3f9e5;">[Tiptoe Walk Image]</div>
+                    <div class="variation-content">
+                        <h3>Tiptoe Walk</h3>
+                        <span class="level level-beginner">Beginner</span>
+                        <ul>
+                            <li>Walk/run on tiptoes to target devices</li>
+                            <li>Improves balance and calf engagement</li>
+                            <li>Great for warming up lower body</li>
+                            <li>Enhances proprioception</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Intermediate Variation -->
+                <div class="variation-card animate-on-scroll">
+                    <div class="variation-image" style="background: #fff8e1;">[Crouch Walk Image]</div>
+                    <div class="variation-content">
+                        <h3>Crouch Walk</h3>
+                        <span class="level level-intermediate">Intermediate</span>
+                        <ul>
+                            <li>Squat-position locomotion</li>
+                            <li>Strengthens quadriceps, glutes, and hamstrings</li>
+                            <li>Improves lower body endurance</li>
+                            <li>Engages core muscles</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Advanced Variation -->
+                <div class="variation-card animate-on-scroll">
+                    <div class="variation-image" style="background: #ffe8e8;">[Blindfolded Partner Image]</div>
+                    <div class="variation-content">
+                        <h3>Blindfolded Partner</h3>
+                        <span class="level level-advanced">Advanced</span>
+                        <ul>
+                            <li>Verbal-guided navigation</li>
+                            <li>Enhances communication skills</li>
+                            <li>Builds trust and team bonding</li>
+                            <li>Improves spatial awareness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Guide Section -->
+    <section class="section" id="implementation">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Implementation Guide</h2>
+                <p>Seamless setup process to get your interactive fitness session started quickly</p>
+            </div>
+            
+            <div class="guide-step animate-on-scroll">
+                <div class="guide-image">[Installation Screenshot]</div>
+                <div class="guide-content">
+                    <h3>1. Installation</h3>
+                    <ul>
+                        <li>Download from Google Play Store on all Android devices</li>
+                        <li>Minimum Android version 8.0 required</li>
+                        <li>Approximately 15MB download size</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guide-step animate-on-scroll">
+                <div class="guide-image">[Initialization Screenshot]</div>
+                <div class="guide-content">
+                    <h3>2. Initialization</h3>
+                    <ul>
+                        <li>Launch the Warm Ups application</li>
+                        <li>Select Single Glow or Two Glow mode</li>
+                        <li>Grant necessary permissions (location, Bluetooth)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guide-step animate-on-scroll">
+                <div class="guide-image">[Configuration Screenshot]</div>
+                <div class="guide-content">
+                    <h3>3. Game Configuration</h3>
+                    <ul>
+                        <li>Choose between Count-Based or Duration-Based format</li>
+                        <li>Count-Based: Set target number of device activations</li>
+                        <li>Duration-Based: Set time limit for the session</li>
+                        <li>Adjust difficulty settings as needed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guide-step animate-on-scroll">
+                <div class="guide-image">[Network Setup Screenshot]</div>
+                <div class="guide-content">
+                    <h3>4. Network Setup</h3>
+                    <ul>
+                        <li>Host device generates unique game code</li>
+                        <li>Participants enter code to join session</li>
+                        <li>All devices connect via local WiFi or Bluetooth</li>
+                        <li>Connection status visible on all devices</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guide-step animate-on-scroll">
+                <div class="guide-image">[Device Placement Screenshot]</div>
+                <div class="guide-content">
+                    <h3>5. Device Placement</h3>
+                    <ul>
+                        <li>Arrange devices according to selected variation</li>
+                        <li>Space devices 2-3 meters apart for optimal play</li>
+                        <li>Ensure flat, stable surfaces</li>
+                        <li>Consider safety when placing devices</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guide-step animate-on-scroll">
+                <div class="guide-image">[Game Execution Screenshot]</div>
+                <div class="guide-content">
+                    <h3>6. Game Execution</h3>
+                    <ul>
+                        <li>Host initiates the session</li>
+                        <li>Real-time progress visible on all devices</li>
+                        <li>Visual and audio feedback for interactions</li>
+                        <li>Session summary displayed upon completion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" id="joinus">
+        <div class="container">
+            <div class="cta">
+                <h2>Ready to Transform Your Fitness Routine?</h2>
+                <p>Join thousands of users enjoying interactive, social fitness with Warm Ups.</p>
+                <div class="cta-badge">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="google-play-badge">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <div>
+                    <h3>Warm Ups</h3>
+                    <p>Transforming fitness and team bonding through interactive challenges.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#implementation">Implementation</a></li>
+                        <li><a href="#variations">Variations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 AR Technologies. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Animate feature cards with delays
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(card);
+        });
+        
+        // Animate variation cards with delays
+        const variationCards = document.querySelectorAll('.variation-card');
+        variationCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(card);
+        });
+        
+        // Animate guide steps with delays
+        const guideSteps = document.querySelectorAll('.guide-step');
+        guideSteps.forEach((step, index) => {
+            step.style.transitionDelay = `${index * 0.2}s`;
+            observer.observe(step);
+        });
+
+        // Navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
